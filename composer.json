@@ -1,0 +1,45 @@
+{
+    "name": "paypronl/omnipay-paypro",
+    "description": "PayPro gateway for Omnipay",
+    "keywords": [
+        "omnipay",
+        "paypro",
+        "paypro.nl"
+    ],
+    "homepage": "https://github.com/payproNL/omnipay-paypro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fruitcake Studio",
+            "email": "info@fruitcakestudio.com",
+            "homepage": "http://fruitcakestudio.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.3.0",
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\PayPro\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\PayPro\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
