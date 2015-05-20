@@ -1,7 +1,14 @@
 HTTP/1.1 200 OK
-Server: Apache
-Date: Sun, 11 May 2014 21:17:31 GMT
-Content-Type: application/json; charset=utf-8
+Date: Wed, 20 May 2015 08:46:26 GMT
+Server: Apache/2.2.22 (Debian)
+Cache-Control: private, max-age=0, must-revalidate
+P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+ETag: "81676e1e11437fcb9fd83d0b7813c"
+X-Runtime: 41
+X-Powered-By: Phusion Passenger 4.0.56
+Set-Cookie: paypronlsession=BAh7dsf4fe3d90ea451d3c31c; domain=.paypro.nl; path=/; expires=Wed, 20-May-2015 10:01:26 GMT; HttpOnly
+Content-Length: 174
 Status: 200 OK
+Content-Type: application/json; charset=utf-8
 
-{"success":true,"reference":"1234"}
+{"return":{"payment_hash":"4d17eb61649e82d226f69603de8ad","payment_url":"https://www.paypro.nl/betalen/4d17eb61649e82d226f69603de8ad"},"errors":"false"}

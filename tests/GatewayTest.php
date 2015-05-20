@@ -3,7 +3,6 @@
 namespace Omnipay\PayPro;
 
 use Omnipay\Tests\GatewayTestCase;
-use Omnipay\Common\CreditCard;
 
 class GatewayTest extends GatewayTestCase
 {
@@ -11,10 +10,12 @@ class GatewayTest extends GatewayTestCase
     {
         parent::setUp();
 
-        $this->gateway = new PayProGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
 
         $this->options = array(
-            'amount' => '10.00',
+          'amount' => 1234,
+          'description' => 'Payment test',
+          'return_url' => 'omnipay-paypro.fcs/return.php',
         );
     }
 
@@ -22,10 +23,13 @@ class GatewayTest extends GatewayTestCase
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
 
-        $response = $this->gateway->authorize($this->options)->send();
+        /** @var Message\PurchaseResponse $response */
+        $response = $this->gateway->purchase($this->options)->send();
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals('1234', $response->getTransactionReference());
+        $this->assertFalse($response->isSuccessful());
+        $this->assertTrue($response->isRedirect());
+        $this->assertEquals('4d17eb61649e82d226f69603de8ad', $response->getTransactionReference());
+        $this->assertEquals('https://www.paypro.nl/betalen/4d17eb61649e82d226f69603de8ad', $response->getRedirectUrl());
         $this->assertNull($response->getMessage());
     }
 }

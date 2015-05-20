@@ -25,7 +25,10 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     public function getData()
     {
-        return $this->parameters->all();
+        $data = $this->parameters->all();
+        $data['return_url'] = $this->getReturnUrl();
+
+        return $data;
     }
 
     public function sendData($data)

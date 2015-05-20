@@ -8,18 +8,20 @@ class ResponseTest extends TestCase
 {
     public function testConstruct()
     {
-        // response should decode URL format data
-        $response = new Response($this->getMockRequest(), 'example=value&foo=bar');
+        // response should keep the array data
+        $response = new PurchaseResponse($this->getMockRequest(), array('example' => 'value', 'foo' => 'bar'));
         $this->assertEquals(array('example' => 'value', 'foo' => 'bar'), $response->getData());
     }
 
     public function testProPurchaseSuccess()
     {
-        $httpResponse = $this->getMockHttpResponse('AuthorizeSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->getBody());
+        $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
+        $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->json());
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals('1234', $response->getTransactionReference());
+        $this->assertFalse($response->isSuccessful());
+        $this->assertTrue($response->isRedirect());
+        $this->assertEquals('4d17eb61649e82d226f69603de8ad', $response->getTransactionReference());
+        $this->assertEquals('https://www.paypro.nl/betalen/4d17eb61649e82d226f69603de8ad', $response->getRedirectUrl());
         $this->assertNull($response->getMessage());
     }
 }

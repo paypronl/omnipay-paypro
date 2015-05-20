@@ -19,27 +19,20 @@ class PurchaseRequestTest extends TestCase
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
             array(
-                'amount' => '10.00',
-                'currency' => 'USD',
-                'card' => $this->getValidCard(),
+              'amount' => 1234,
+              'description' => 'Payment test',
+              'returnUrl' => 'omnipay-paypro.fcs/return.php',
             )
         );
     }
 
     public function testGetData()
     {
-        $card = new CreditCard($this->getValidCard());
-        $card->setStartMonth(1);
-        $card->setStartYear(2000);
-
-        $this->request->setCard($card);
-        $this->request->setTransactionId('abc123');
-
         $data = $this->request->getData();
 
-        $this->assertSame('abc123', $data['transaction_id']);
+        $this->assertSame(1234, $data['amount']);
 
-        $this->assertSame($card->getExpiryDate('mY'), $data['expire_date']);
-        $this->assertSame('012000', $data['start_date']);
+        $this->assertSame('Payment test', $data['description']);
+        $this->assertSame('omnipay-paypro.fcs/return.php', $data['returnUrl']);
     }
 }
