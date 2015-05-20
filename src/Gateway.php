@@ -16,10 +16,10 @@ class Gateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return [
+        return array(
             'apiKey' => '',
             'testMode' => false,
-        ];
+        );
     }
 
     public function getApiKey()
