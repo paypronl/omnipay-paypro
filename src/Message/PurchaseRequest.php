@@ -2,6 +2,8 @@
 namespace Omnipay\PayPro\Message;
 /**
  * Purchase Request
+ *
+ * @method PurchaseResponse send()
  */
 class PurchaseRequest extends AbstractRequest
 {

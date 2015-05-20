@@ -16,10 +16,10 @@ class Gateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return array(
+        return [
             'apiKey' => '',
             'testMode' => false,
-        );
+        ];
     }
 
     public function getApiKey()
@@ -32,7 +32,11 @@ class Gateway extends AbstractGateway
         return $this->setParameter('apiKey', $value);
     }
 
-    public function purchase(array $parameters = array())
+    /**
+     * @param array $parameters
+     * @return \Omnipay\PayPro\Message\PurchaseRequest
+     */
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\PayPro\Message\PurchaseRequest', $parameters);
     }
