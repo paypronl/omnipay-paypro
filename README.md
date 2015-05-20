@@ -32,6 +32,7 @@ The following gateways are provided by this package:
 ## Example
 
 ```php
+/** @var \Omnipay\PayPro\Gateway $gateway */
 $gateway = Omnipay\Omnipay::create('PayPro');
 
 $gateway->setApiKey('YOUR API KEY HERE');
@@ -42,7 +43,6 @@ $params = array(
     'return_url' => 'www.paypro.nl/return_here',
 );
 
-/** @var \Omnipay\PayPro\Message\PurchaseResponse $response */
 $response = $gateway->purchase($params)->send();
 
 if ($response->isSuccessful()) {
