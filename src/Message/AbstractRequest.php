@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Skeleton\Message;
+namespace Omnipay\PayPro\Message;
 
 use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
@@ -39,16 +39,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
         );
         $httpResponse = $this->httpClient->post($url, null, $body)->send();
 
-        return $this->createResponse($httpResponse->getBody());
+        return $this->createResponse($httpResponse->json());
     }
 
     protected function getEndpoint()
     {
         return $this->endpoint;
-    }
-
-    protected function createResponse($data)
-    {
-        return $this->response = new Response($this, $data);
     }
 }

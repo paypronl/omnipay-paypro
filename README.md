@@ -29,6 +29,31 @@ The following gateways are provided by this package:
 
  * PayPro
 
+## Example
+
+```php
+$gateway = Omnipay\Omnipay::create('PayPro');
+
+$gateway->setApiKey('YOUR API KEY HERE');
+
+$params = array(
+    'amount' => 1234,
+    'description' => 'Payment test',
+    'return_url' => 'www.paypro.nl/return_here',
+);
+
+/** @var \Omnipay\PayPro\Message\PurchaseResponse $response */
+$response = $gateway->purchase($params)->send();
+
+if ($response->isSuccessful()) {
+    echo 'Success!';
+} elseif ($response->isRedirect()) {
+    $response->redirect();
+} else {
+    echo 'Failed';
+}
+```
+
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
 
 ## Support
