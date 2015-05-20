@@ -34,11 +34,14 @@ The following gateways are provided by this package:
 ```php
 /** @var \Omnipay\PayPro\Gateway $gateway */
 $gateway = Omnipay\Omnipay::create('PayPro');
-
-$gateway->setApiKey('YOUR API KEY HERE');
+$gateway->initialize([
+    'apiKey' => 'YOUR API KEY HERE',
+    'productId' => null,
+    'testMode' => true,
+]);
 
 $params = array(
-    'amount' => 1234,
+    'amount' => 12.34,
     'description' => 'Payment test',
     'return_url' => 'www.paypro.nl/return_here',
 );

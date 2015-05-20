@@ -18,6 +18,7 @@ class Gateway extends AbstractGateway
     {
         return array(
             'apiKey' => '',
+            'productId' => null,
             'testMode' => false,
         );
     }
@@ -39,5 +40,14 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\PayPro\Message\PurchaseRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\PayPro\Message\CompletePurchaseRequest
+     */
+    public function completePurchase(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\PayPro\Message\CompletePurchaseRequest', $parameters);
     }
 }
