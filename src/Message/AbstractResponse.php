@@ -25,4 +25,9 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         return false;
     }
+
+    protected function get($key)
+    {
+        return isset($this->data[$key]) ? $this->data[$key] : null;
+    }
 }

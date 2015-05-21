@@ -7,36 +7,78 @@ namespace Omnipay\PayPro\Message;
 class CompletePurchaseResponse extends AbstractResponse
 {
 
-    public function __construct(CompletePurchaseRequest $request, array $data)
-    {
-        $this->request = $request;
-        $this->data = $data;
-
-        if ($data['amount'] !== $request->getAmountInteger()) {
-            throw new \Exception("Amount doesn't match original amount");
-        }
-
-        if ($data['remote_ip'] !== '178.22.56.21') {
-            throw new \Exception("Invalid remote IP");
-        }
-
-        // TODO; check email?
-    }
-
-
-    public function getTransactionReference()
-    {
-
-    }
-
     /**
-     * Does the response require a redirect?
+     * Is the request successful?
      *
      * @return boolean
      */
-    public function isSuccesful()
+    public function isSuccessful()
     {
+        // TODO; define when?
         return true;
     }
 
+    /**
+     * Gateway Reference
+     *
+     * @return string A reference provided by the gateway to represent this transaction
+     */
+    public function getTransactionReference()
+    {
+        return basename($this->get('trackcode'));
+    }
+
+    /**
+     * Transaction ID
+     *
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->get('custom');
+    }
+
+    /**
+     * Response code
+     *
+     * @return string The type of response
+     */
+    public function getType()
+    {
+        return $this->get('type');
+    }
+
+    /**
+     * Response code
+     *
+     * @return string A response code from the payment gateway
+     */
+    public function getCode()
+    {
+        return $this->getType();
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductId()
+    {
+        return (int) $this->get('product_id');
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductName()
+    {
+        return $this->get('product_name');
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->get('amount') / 100;
+    }
 }

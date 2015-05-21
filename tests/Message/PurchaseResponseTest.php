@@ -4,7 +4,7 @@ namespace Omnipay\PayPro\Message;
 
 use Omnipay\Tests\TestCase;
 
-class ResponseTest extends TestCase
+class PurchaseResponseTest extends TestCase
 {
     public function testConstruct()
     {
@@ -13,7 +13,7 @@ class ResponseTest extends TestCase
         $this->assertEquals(array('example' => 'value', 'foo' => 'bar'), $response->getData());
     }
 
-    public function testProPurchaseSuccess()
+    public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
         $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->json());

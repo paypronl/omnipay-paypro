@@ -25,6 +25,16 @@ class PurchaseRequest extends AbstractRequest
         $data['postback_url'] = $this->getNotifyUrl();
         $data['test_mode'] = $this->getTestMode();
 
+        /** @var \Omnipay\Common\CreditCard $card */
+        if ($card = $this->getCard()) {
+            $data['consumer_email'] = $card->getEmail();
+            $data['consumer_name'] = $card->getName();
+            $data['consumer_address'] = trim($card->getAddress1() . "\n" . $card->getAddress2());
+            $data['consumer_postal'] = $card->getPostcode();
+            $data['consumer_city'] = $card->getCity();
+            $data['consumer_country'] = $card->getCountry();
+        }
+
         return $data;
     }
 
