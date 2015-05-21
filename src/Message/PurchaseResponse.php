@@ -8,7 +8,9 @@ use Omnipay\Common\Message\RedirectResponseInterface;
  */
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
-
+    /**
+     * @return null|string
+     */
     public function getTransactionReference()
     {
         if (isset($this->data['return']) && isset($this->data['return']['payment_hash'])) {
@@ -18,6 +20,19 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
         return null;
     }
 
+    /**
+     * @return null|string
+     */
+    public function getMessage()
+    {
+        $return = $this->get('return');
+
+        if ($return && is_string($return)) {
+            return $return;
+        }
+
+        return null;
+    }
     /**
      * Does the response require a redirect?
      *

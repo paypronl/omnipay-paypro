@@ -48,6 +48,19 @@ class GatewayTest extends GatewayTestCase
         $this->assertNull($response->getMessage());
     }
 
+    public function testPurchaseFail()
+    {
+        $this->setMockHttpResponse('PurchaseFail.txt');
+
+        /** @var Message\PurchaseResponse $response */
+        $response = $this->gateway->purchase($this->options)->send();
+
+        $this->assertFalse($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertNull($response->getTransactionReference());
+        $this->assertEquals('Invalid product ID', $response->getMessage());
+    }
+
     public function testCompletePurchase()
     {
         /** @var Message\PurchaseResponse $response */
