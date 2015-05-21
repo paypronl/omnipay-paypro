@@ -11,14 +11,16 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function getData()
     {
-        return [];
-    }
-
-    public function send()
-    {
         $data = $this->httpRequest->request->all();
         $data['remote_ip'] = $this->httpRequest->getClientIp();
+    }
 
+    /**
+     * @param  array $data
+     * @return CompletePurchaseResponse
+     */
+    public function sendData($data)
+    {
         return $this->createResponse($data);
     }
 

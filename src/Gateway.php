@@ -66,7 +66,7 @@ class Gateway extends AbstractGateway
      * @param array $parameters
      * @return \Omnipay\PayPro\Message\PurchaseRequest
      */
-    public function purchase(array $parameters = [])
+    public function purchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\PayPro\Message\PurchaseRequest', $parameters);
     }
@@ -75,8 +75,17 @@ class Gateway extends AbstractGateway
      * @param array $parameters
      * @return \Omnipay\PayPro\Message\CompletePurchaseRequest
      */
-    public function completePurchase(array $parameters = [])
+    public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\PayPro\Message\CompletePurchaseRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\PayPro\Message\CompletePurchaseRequest
+     */
+    public function fetchIssuers(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPro\Message\FetchIssuersRequest', $parameters);
     }
 }
