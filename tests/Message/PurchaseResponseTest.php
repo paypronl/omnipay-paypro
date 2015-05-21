@@ -24,5 +24,6 @@ class PurchaseResponseTest extends TestCase
         $this->assertEquals('4d17eb61649e82d226f69603de8ad', $response->getTransactionReference());
         $this->assertEquals('https://www.paypro.nl/betalen/4d17eb61649e82d226f69603de8ad', $response->getRedirectUrl());
         $this->assertNull($response->getMessage());
+        $this->assertNull($response->getRedirectData());
     }
 }

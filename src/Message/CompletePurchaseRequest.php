@@ -4,7 +4,7 @@ namespace Omnipay\PayPro\Message;
  * Complete Purchase Request
  *
  */
-class CompletePurchaseRequest extends AbstractRequest
+class CompletePurchaseRequest extends PurchaseRequest
 {
     protected $allowedIps = array(
         '178.22.62.12', // PayPro gateway

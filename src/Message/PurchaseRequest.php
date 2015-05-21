@@ -8,6 +8,40 @@ namespace Omnipay\PayPro\Message;
 class PurchaseRequest extends AbstractRequest
 {
     /**
+     * @return int
+     */
+    public function getProductId()
+    {
+        return $this->getParameter('productId');
+    }
+
+    /**
+     * @param  int $value
+     * @return $this
+     */
+    public function setProductId($value)
+    {
+        return $this->setParameter('productId', $value);
+    }
+
+    /**
+     * @return int
+     */
+    public function getVat()
+    {
+        return $this->getParameter('vat');
+    }
+
+    /**
+     * @param  int $value
+     * @return $this
+     */
+    public function setVat($value)
+    {
+        return $this->setParameter('vat', $value);
+    }
+
+    /**
      * @return array
      */
     public function getData()

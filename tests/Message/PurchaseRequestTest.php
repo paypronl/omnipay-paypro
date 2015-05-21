@@ -26,6 +26,7 @@ class PurchaseRequestTest extends TestCase
               'notifyUrl' => 'omnipay-paypro.fcs/notify.php',
               'issuer' => '0123',
               'transactionId' => 'abc12345',
+              'vat' => 21,
               'card' => array(
                 'email' => 'info@example.com',
                 'name' => 'My Name',
@@ -51,6 +52,7 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('omnipay-paypro.fcs/notify.php', $data['postback_url']);
         $this->assertSame('0123', $data['psp_code']);
         $this->assertSame('abc12345', $data['custom']);
+        $this->assertSame(21, $data['vat']);
 
         $this->assertSame('info@example.com', $data['consumer_email']);
         $this->assertSame('My Name', $data['consumer_name']);
