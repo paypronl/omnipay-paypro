@@ -18,7 +18,7 @@ class GatewayTest extends GatewayTestCase
         parent::setUp();
 
         $post = array('amount' => '1234', 'type' => 'Verkoop');
-        $server = array('REMOTE_ADDR' => '178.22.56.21');
+        $server = array('REMOTE_ADDR' => '178.22.62.12');
         $httpRequest = new HttpRequest(array(), $post, array(), array(), array(), $server);
 
         $this->gateway = new Gateway($this->getHttpClient(), $httpRequest);

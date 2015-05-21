@@ -20,7 +20,7 @@ class CompletePurchaseRequestTest extends TestCase
         parent::setUp();
 
         $post = array('amount' => '1234', 'type' => 'Verkoop');
-        $server = array('REMOTE_ADDR' => '178.22.56.21');
+        $server = array('REMOTE_ADDR' => '178.22.62.12');
         $this->httpRequest = new HttpRequest(array(), $post, array(), array(), array(), $server);
 
         $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->httpRequest);

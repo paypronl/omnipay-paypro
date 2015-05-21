@@ -7,7 +7,8 @@ namespace Omnipay\PayPro\Message;
 class CompletePurchaseRequest extends AbstractRequest
 {
     protected $allowedIps = array(
-        '178.22.56.21', // PayPro gateway
+        '178.22.62.12', // PayPro gateway
+        '178.22.56.21', // Alternative IP
     );
 
     /**
