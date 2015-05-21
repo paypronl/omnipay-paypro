@@ -13,7 +13,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function getTransactionReference()
     {
-        if (isset($this->data['return']) && isset($this->data['return']['payment_hash'])) {
+        if (isset($this->data['return']) && is_array($this->data['return']) && isset($this->data['return']['payment_hash'])) {
             return $this->data['return']['payment_hash'];
         }
 
