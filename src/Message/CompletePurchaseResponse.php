@@ -59,6 +59,14 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->getProductName();
+    }
+
+    /**
      * @return int
      */
     public function getProductId()

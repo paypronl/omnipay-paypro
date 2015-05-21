@@ -3,6 +3,7 @@
 namespace Omnipay\PayPro;
 
 use Omnipay\Tests\GatewayTestCase;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GatewayTest extends GatewayTestCase
 {
@@ -16,7 +17,11 @@ class GatewayTest extends GatewayTestCase
     {
         parent::setUp();
 
-        $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
+        $post = array('amount' => '1234');
+        $server = array('REMOTE_ADDR' => '178.22.56.21');
+        $httpRequest = new HttpRequest(array(), $post, array(), array(), array(), $server);
+
+        $this->gateway = new Gateway($this->getHttpClient(), $httpRequest);
 
         $this->gateway->initialize(array(
             'apiKey' => 'YOUR API KEY',
@@ -26,6 +31,7 @@ class GatewayTest extends GatewayTestCase
           'amount' => 12.34,
           'description' => 'Payment test',
           'return_url' => 'omnipay-paypro.fcs/return.php',
+
         );
     }
 
@@ -41,6 +47,15 @@ class GatewayTest extends GatewayTestCase
         $this->assertEquals('4d17eb61649e82d226f69603de8ad', $response->getTransactionReference());
         $this->assertEquals('https://www.paypro.nl/betalen/4d17eb61649e82d226f69603de8ad', $response->getRedirectUrl());
         $this->assertNull($response->getMessage());
+    }
+
+    public function testCompletePurchase()
+    {
+        /** @var Message\PurchaseResponse $response */
+        $response = $this->gateway->completePurchase($this->options)->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertEquals(12.34, $response->getAmount());
     }
 
     public function testFetchIssuers()

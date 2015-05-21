@@ -20,7 +20,8 @@ class CompletePurchaseResponseTest extends TestCase
             'type' => 'Verkoop',
             'trackcode' => 'https://www.paypro.nl/betalen/a209daa96392c1e87f65789e278310f',
             'amount' => '1234',
-            'product_id' => '',
+            'product_id' => '12',
+            'product_name' => 'Test payment'
         );
         $response = new CompletePurchaseResponse($this->getMockRequest(), $data);
 
@@ -31,6 +32,9 @@ class CompletePurchaseResponseTest extends TestCase
         $this->assertEquals('Verkoop', $response->getCode());
         $this->assertEquals(12.34, $response->getAmount());
         $this->assertEquals('f597b4a913dfa8fc355431102a605', $response->getTransactionId());
+        $this->assertEquals(12, $response->getProductId());
+        $this->assertEquals('Test payment', $response->getDescription());
+        $this->assertEquals('Test payment', $response->getProductName());
         $this->assertNull($response->getMessage());
     }
 }
