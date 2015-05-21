@@ -82,10 +82,19 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\PayPro\Message\CompletePurchaseRequest
+     * @return \Omnipay\PayPro\Message\FetchIssuersRequest
      */
     public function fetchIssuers(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\PayPro\Message\FetchIssuersRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\PayPro\Message\FetchPaymentMethodsRequest
+     */
+    public function fetchPaymentMethods(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPro\Message\FetchPaymentMethodsRequest', $parameters);
     }
 }

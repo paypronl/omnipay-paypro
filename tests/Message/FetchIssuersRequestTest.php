@@ -21,6 +21,7 @@ class FetchIssuersRequestTest extends TestCase
         // No actual response yet
         //$this->setMockHttpResponse('FetchIssuersSuccess.txt');
 
+        /** @var FetchIssuersResponse $response */
         $response = $this->request->send();
 
         $this->assertTrue($response->isSuccessful());
@@ -33,5 +34,6 @@ class FetchIssuersRequestTest extends TestCase
         $this->assertInstanceOf('\Omnipay\Common\Issuer', $issuer);
         $this->assertEquals('0021', $issuer->getId());
         $this->assertEquals('Rabobank', $issuer->getName());
+        $this->assertEquals('000', $issuer->getPaymentMethod());
     }
 }
