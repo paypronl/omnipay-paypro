@@ -12,14 +12,18 @@ class GatewayTest extends GatewayTestCase
 
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
 
+        $this->gateway->initialize(array(
+            'apiKey' => 'YOUR API KEY',
+        ));
+
         $this->options = array(
-          'amount' => 1234,
+          'amount' => 12.34,
           'description' => 'Payment test',
           'return_url' => 'omnipay-paypro.fcs/return.php',
         );
     }
 
-    public function testPurcahse()
+    public function testPurchase()
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
 

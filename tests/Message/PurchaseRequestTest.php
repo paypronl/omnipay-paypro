@@ -19,7 +19,8 @@ class PurchaseRequestTest extends TestCase
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
             array(
-              'amount' => 1234,
+              'apiKey' => 'YOUR API KEY',
+              'amount' => 12.34,
               'description' => 'Payment test',
               'returnUrl' => 'omnipay-paypro.fcs/return.php',
             )
@@ -31,8 +32,7 @@ class PurchaseRequestTest extends TestCase
         $data = $this->request->getData();
 
         $this->assertSame(1234, $data['amount']);
-
         $this->assertSame('Payment test', $data['description']);
-        $this->assertSame('omnipay-paypro.fcs/return.php', $data['returnUrl']);
+        $this->assertSame('omnipay-paypro.fcs/return.php', $data['return_url']);
     }
 }

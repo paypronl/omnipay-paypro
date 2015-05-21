@@ -9,11 +9,17 @@ use Omnipay\Common\AbstractGateway;
  */
 class Gateway extends AbstractGateway
 {
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'PayPro';
     }
 
+    /**
+     * @return array
+     */
     public function getDefaultParameters()
     {
         return array(
@@ -23,14 +29,37 @@ class Gateway extends AbstractGateway
         );
     }
 
+    /**
+     * @return string
+     */
     public function getApiKey()
     {
         return $this->getParameter('apiKey');
     }
 
+    /**
+     * @param  string $value
+     * @return $this
+     */
     public function setApiKey($value)
     {
         return $this->setParameter('apiKey', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductId()
+    {
+        return $this->getParameter('productId');
+    }
+
+    /**
+     * @param  int $value
+     * @return $this
+     */
+    public function setProductId($value){
+        return $this->setParameter('productId', $value);
     }
 
     /**
