@@ -13,7 +13,8 @@ class FetchPaymentMethodsRequest extends AbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return CompletePurchaseResponse
      */
     public function sendData($data)
@@ -22,7 +23,8 @@ class FetchPaymentMethodsRequest extends AbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return CompletePurchaseResponse
      */
     protected function createResponse($data)

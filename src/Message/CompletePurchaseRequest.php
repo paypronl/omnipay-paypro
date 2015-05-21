@@ -1,8 +1,9 @@
 <?php
+
 namespace Omnipay\PayPro\Message;
+
 /**
- * Complete Purchase Request
- *
+ * Complete Purchase Request.
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {
@@ -18,19 +19,22 @@ class CompletePurchaseRequest extends PurchaseRequest
     {
         $data = $this->httpRequest->request->all();
         $data['amount'] = isset($data['amount']) ? (int) $data['amount'] : null;
+
         return $data;
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return \Omnipay\PayPro\Message\CompletePurchaseResponse
+     *
      * @throws \Exception
      */
     public function sendData($data)
     {
         // Check if the request is from a trusted server
-        if ( ! in_array($this->httpRequest->getClientIp(), $this->allowedIps)) {
-            throw new \Exception("Invalid remote IP");
+        if (!in_array($this->httpRequest->getClientIp(), $this->allowedIps)) {
+            throw new \Exception('Invalid remote IP');
         }
 
         // Verify that the amount isn't changed
@@ -42,7 +46,8 @@ class CompletePurchaseRequest extends PurchaseRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return CompletePurchaseResponse
      */
     protected function createResponse($data)

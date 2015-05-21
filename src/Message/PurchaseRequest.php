@@ -1,7 +1,9 @@
 <?php
+
 namespace Omnipay\PayPro\Message;
+
 /**
- * Purchase Request
+ * Purchase Request.
  *
  * @method PurchaseResponse send()
  */
@@ -16,7 +18,8 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param  int $value
+     * @param int $value
+     *
      * @return $this
      */
     public function setProductId($value)
@@ -33,7 +36,8 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param  int $value
+     * @param int $value
+     *
      * @return $this
      */
     public function setVat($value)
@@ -63,7 +67,7 @@ class PurchaseRequest extends AbstractRequest
         if ($card = $this->getCard()) {
             $data['consumer_email'] = $card->getEmail();
             $data['consumer_name'] = $card->getName();
-            $data['consumer_address'] = trim($card->getAddress1() . "\n" . $card->getAddress2());
+            $data['consumer_address'] = trim($card->getAddress1()."\n".$card->getAddress2());
             $data['consumer_postal'] = $card->getPostcode();
             $data['consumer_city'] = $card->getCity();
             $data['consumer_country'] = $card->getCountry();
@@ -73,7 +77,8 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return PurchaseResponse
      */
     protected function createResponse($data)

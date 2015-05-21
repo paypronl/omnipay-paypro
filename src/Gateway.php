@@ -5,7 +5,7 @@ namespace Omnipay\PayPro;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * Skeleton Gateway
+ * PayPro Gateway.
  */
 class Gateway extends AbstractGateway
 {
@@ -38,7 +38,8 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * @param  string $value
+     * @param string $value
+     *
      * @return $this
      */
     public function setApiKey($value)
@@ -55,15 +56,18 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * @param  int $value
+     * @param int $value
+     *
      * @return $this
      */
-    public function setProductId($value){
+    public function setProductId($value)
+    {
         return $this->setParameter('productId', $value);
     }
 
     /**
      * @param array $parameters
+     *
      * @return \Omnipay\PayPro\Message\PurchaseRequest
      */
     public function purchase(array $parameters = array())
@@ -73,6 +77,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
+     *
      * @return \Omnipay\PayPro\Message\CompletePurchaseRequest
      */
     public function completePurchase(array $parameters = array())
@@ -82,6 +87,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
+     *
      * @return \Omnipay\PayPro\Message\FetchIssuersRequest
      */
     public function fetchIssuers(array $parameters = array())
@@ -91,6 +97,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
+     *
      * @return \Omnipay\PayPro\Message\FetchPaymentMethodsRequest
      */
     public function fetchPaymentMethods(array $parameters = array())

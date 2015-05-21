@@ -6,8 +6,7 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 
 /**
- * Abstract Request
- *
+ * Abstract Request.
  */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
@@ -23,7 +22,8 @@ abstract class AbstractRequest extends BaseAbstractRequest
     }
 
     /**
-     * @param  string $value
+     * @param string $value
+     *
      * @return $this
      */
     public function setApiKey($value)
@@ -32,7 +32,8 @@ abstract class AbstractRequest extends BaseAbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return ResponseInterface
      */
     public function sendData($data)
@@ -56,5 +57,4 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->endpoint;
     }
-
 }

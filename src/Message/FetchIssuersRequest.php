@@ -1,8 +1,9 @@
 <?php
+
 namespace Omnipay\PayPro\Message;
+
 /**
- * Complete Purchase Request
- *
+ * Complete Purchase Request.
  */
 class FetchIssuersRequest extends AbstractRequest
 {
@@ -15,7 +16,8 @@ class FetchIssuersRequest extends AbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return CompletePurchaseResponse
      */
     public function sendData($data)
@@ -24,7 +26,8 @@ class FetchIssuersRequest extends AbstractRequest
     }
 
     /**
-     * @param  array $data
+     * @param array $data
+     *
      * @return CompletePurchaseResponse
      */
     protected function createResponse($data)

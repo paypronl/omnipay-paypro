@@ -1,10 +1,11 @@
 <?php
+
 namespace Omnipay\PayPro\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 
 /**
- * Purchase Request
+ * Purchase Request.
  */
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
@@ -17,7 +18,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
             return $this->data['return']['payment_hash'];
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -32,12 +33,12 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
             return $return;
         }
 
-        return null;
+        return;
     }
     /**
      * Does the response require a redirect?
      *
-     * @return boolean
+     * @return bool
      */
     public function isRedirect()
     {
@@ -67,6 +68,6 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function getRedirectData()
     {
-        return null;
+        return;
     }
 }

@@ -79,5 +79,4 @@ class CompletePurchaseRequestTest extends TestCase
 
         $this->request->send();
     }
-
 }

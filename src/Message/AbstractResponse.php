@@ -6,7 +6,7 @@ use Omnipay\Common\Message\AbstractResponse as BaseAbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
- * Response
+ * Response.
  */
 abstract class AbstractResponse extends BaseAbstractResponse
 {
@@ -19,7 +19,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
     /**
      * Is the response successful?
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccessful()
     {

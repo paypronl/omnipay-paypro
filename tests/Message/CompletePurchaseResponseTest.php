@@ -21,7 +21,7 @@ class CompletePurchaseResponseTest extends TestCase
             'payment_hash' => 'a209daa963929e278310f',
             'amount' => '1234',
             'product_id' => '12',
-            'product_name' => 'Test payment'
+            'product_name' => 'Test payment',
         );
         $response = new CompletePurchaseResponse($this->getMockRequest(), $data);
 

@@ -2,7 +2,6 @@
 
 namespace Omnipay\PayPro\Message;
 
-use Omnipay\Common\CreditCard;
 use Omnipay\Tests\TestCase;
 
 class PurchaseRequestTest extends TestCase

@@ -1,16 +1,16 @@
 <?php
+
 namespace Omnipay\PayPro\Message;
 
 /**
- * Purchase Request
+ * Purchase Request.
  */
 class CompletePurchaseResponse extends AbstractResponse
 {
-
     /**
      * Is the request successful?
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccessful()
     {
@@ -18,7 +18,7 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * Gateway Reference
+     * Gateway Reference.
      *
      * @return string A reference provided by the gateway to represent this transaction
      */
@@ -28,7 +28,7 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * Transaction ID
+     * Transaction ID.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * Response code
+     * Response code.
      *
      * @return string The type of response
      */
@@ -48,7 +48,7 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * Response code
+     * Response code.
      *
      * @return string A response code from the payment gateway
      */
