@@ -24,7 +24,7 @@ class CompletePurchaseResponse extends AbstractResponse
      */
     public function getTransactionReference()
     {
-        return basename($this->get('trackcode'));
+        return $this->get('payment_hash');
     }
 
     /**

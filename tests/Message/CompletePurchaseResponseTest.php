@@ -16,9 +16,9 @@ class CompletePurchaseResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $data = array(
-            'custom' => 'f597b4a913dfa8fc355431102a605',
+            'custom' => 'abc12345',
             'type' => 'Verkoop',
-            'trackcode' => 'https://www.paypro.nl/betalen/a209daa96392c1e87f65789e278310f',
+            'payment_hash' => 'a209daa963929e278310f',
             'amount' => '1234',
             'product_id' => '12',
             'product_name' => 'Test payment'
@@ -27,11 +27,11 @@ class CompletePurchaseResponseTest extends TestCase
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
-        $this->assertEquals('a209daa96392c1e87f65789e278310f', $response->getTransactionReference());
+        $this->assertEquals('a209daa963929e278310f', $response->getTransactionReference());
         $this->assertEquals('Verkoop', $response->getType());
         $this->assertEquals('Verkoop', $response->getCode());
         $this->assertEquals(12.34, $response->getAmount());
-        $this->assertEquals('f597b4a913dfa8fc355431102a605', $response->getTransactionId());
+        $this->assertEquals('abc12345', $response->getTransactionId());
         $this->assertEquals(12, $response->getProductId());
         $this->assertEquals('Test payment', $response->getDescription());
         $this->assertEquals('Test payment', $response->getProductName());
