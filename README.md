@@ -3,7 +3,7 @@
 **PayPro gateway for the Omnipay PHP payment processing library**
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/fruitcakestudio/omnipay-paypro/master.svg?style=flat-square)](https://travis-ci.org/paypronl/omnipay-paypro)
+[![Build Status](https://img.shields.io/travis/fruitcakestudio/omnipay-paypro/master.svg?style=flat-square)](https://travis-ci.org/fruitcakestudio/omnipay-paypro)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements paypro support for Omnipay.
