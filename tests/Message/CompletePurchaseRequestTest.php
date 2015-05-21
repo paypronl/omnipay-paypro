@@ -19,7 +19,7 @@ class CompletePurchaseRequestTest extends TestCase
     {
         parent::setUp();
 
-        $post = array('amount' => '1234');
+        $post = array('amount' => '1234', 'type' => 'Verkoop');
         $server = array('REMOTE_ADDR' => '178.22.56.21');
         $this->httpRequest = new HttpRequest(array(), $post, array(), array(), array(), $server);
 
@@ -47,6 +47,15 @@ class CompletePurchaseRequestTest extends TestCase
         $response = $this->request->send();
 
         $this->assertInstanceOf('\Omnipay\PayPro\Message\CompletePurchaseResponse', $response);
+        $this->assertTrue($response->isSuccessful());
+    }
+
+    public function testSendDataFail()
+    {
+        $this->httpRequest->request->set('type', 'Termijn');
+        $response = $this->request->send();
+
+        $this->assertFalse($response->isSuccessful());
     }
 
     /**

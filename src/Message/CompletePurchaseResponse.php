@@ -14,8 +14,7 @@ class CompletePurchaseResponse extends AbstractResponse
      */
     public function isSuccessful()
     {
-        // TODO; define when?
-        return true;
+        return $this->getType() === 'Verkoop';
     }
 
     /**

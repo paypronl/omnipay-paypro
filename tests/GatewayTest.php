@@ -17,7 +17,7 @@ class GatewayTest extends GatewayTestCase
     {
         parent::setUp();
 
-        $post = array('amount' => '1234');
+        $post = array('amount' => '1234', 'type' => 'Verkoop');
         $server = array('REMOTE_ADDR' => '178.22.56.21');
         $httpRequest = new HttpRequest(array(), $post, array(), array(), array(), $server);
 
@@ -31,7 +31,6 @@ class GatewayTest extends GatewayTestCase
           'amount' => 12.34,
           'description' => 'Payment test',
           'return_url' => 'omnipay-paypro.fcs/return.php',
-
         );
     }
 
