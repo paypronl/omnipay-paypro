@@ -25,9 +25,10 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function getMessage()
     {
+        $errors = $this->get('errors');
         $return = $this->get('return');
 
-        if ($return && is_string($return)) {
+        if ($errors === 'true' && $return && is_string($return)) {
             return $return;
         }
 
@@ -40,7 +41,9 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function isRedirect()
     {
-        return isset($this->data['return']) && isset($this->data['return']['payment_url']);
+        $errors = $this->get('errors');
+
+        return $errors === 'false' && isset($this->data['return']) && isset($this->data['return']['payment_url']);
     }
 
     /**
