@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Thu, 21 May 2015 11:46:51 GMT
+Server: Apache/2.2.22 (Debian)
+ETag: "17490e08cb031074fd8acd907c"
+Cache-Control: private, max-age=0, must-revalidate
+P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+X-Runtime: 35
+X-Powered-By: Phusion Passenger 4.0.56
+Set-Cookie: paypronlsession=BAh7BjoPc2Vzc2lvbl9I5634e469090111b2860cd566f4a19; domain=.paypro.nl; path=/; expires=Thu, 21-May-2015 13:01:51 GMT; HttpOnly
+Content-Length: 47
+Status: 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"return":"Invalid product ID","errors":"true"}
