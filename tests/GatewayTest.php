@@ -70,7 +70,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertEquals(12.34, $response->getAmount());
     }
 
-    public function testFetchIssuers()
+    public function testFetchIssuersSuccess()
     {
         $this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
 
@@ -80,7 +80,17 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($response->isSuccessful());
     }
 
-    public function testPaymentMethods()
+    public function testFetchIssuersSuccessFail()
+    {
+        $this->setMockHttpResponse('FetchPaymentMethodsFail.txt');
+
+        /** @var Message\FetchIssuersResponse $response */
+        $response = $this->gateway->fetchIssuers($this->options)->send();
+
+        $this->assertFalse($response->isSuccessful());
+    }
+
+    public function testPaymentMethodsSuccess()
     {
         $this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
 
@@ -88,5 +98,15 @@ class GatewayTest extends GatewayTestCase
         $response = $this->gateway->fetchPaymentMethods($this->options)->send();
 
         $this->assertTrue($response->isSuccessful());
+    }
+
+    public function testPaymentMethodsFail()
+    {
+        $this->setMockHttpResponse('FetchPaymentMethodsFail.txt');
+
+        /** @var Message\FetchPaymentMethodsResponse $response */
+        $response = $this->gateway->fetchPaymentMethods($this->options)->send();
+
+        $this->assertFalse($response->isSuccessful());
     }
 }

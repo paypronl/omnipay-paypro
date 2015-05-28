@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Thu, 28 May 2015 10:26:47 GMT
+Server: Apache/2.2.22 (Debian)
+X-Runtime: 19
+Cache-Control: private, max-age=0, must-revalidate
+ETag: "a4408d6090d1c1b07e31dcd"
+P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+X-Powered-By: Phusion Passenger 4.0.56
+Set-Cookie: paypronlsession=BAh7BjoPc2Vzc2lvbl9pZCIlNzk2NzQb414f1875f1f158a6b50; domain=.paypro.nl; path=/; expires=Thu, 28-May-2015 11:41:47 GMT; HttpOnly
+Content-Length: 30
+Status: 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"return":"API key not valid"}
