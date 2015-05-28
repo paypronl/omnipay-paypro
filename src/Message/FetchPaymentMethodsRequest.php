@@ -2,6 +2,9 @@
 
 namespace Omnipay\PayPro\Message;
 
+/**
+ * @method FetchPaymentMethodsResponse send()
+ */
 class FetchPaymentMethodsRequest extends AbstractRequest
 {
     /**
@@ -17,18 +20,17 @@ class FetchPaymentMethodsRequest extends AbstractRequest
      *
      * @return CompletePurchaseResponse
      */
-    public function sendData($data)
-    {
-        return $this->createResponse($data);
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return CompletePurchaseResponse
-     */
     protected function createResponse($data)
     {
         return $this->response = new FetchPaymentMethodsResponse($this, $data);
     }
+
+    /**
+     * @return string
+     */
+    protected function getCommand()
+    {
+        return 'get_pay_methods';
+    }
 }
+

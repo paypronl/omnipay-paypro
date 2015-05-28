@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Thu, 28 May 2015 09:59:59 GMT
+Server: Apache/2.2.22 (Debian)
+X-Runtime: 280
+ETag: "50f813eb0f3e109cc491973f782"
+P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+Cache-Control: private, max-age=0, must-revalidate
+X-Powered-By: Phusion Passenger 4.0.56
+Set-Cookie: paypronlsession=BAh7BjoPc2Vzc2lvb60866f55a2fa345c21217a438b7f99; domain=.paypro.nl; path=/; expires=Thu, 28-May-2015 11:15:00 GMT; HttpOnly
+Content-Length: 1722
+Status: 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"return":{"total":8,"data":{"sofort":{"methods":[{"order":1,"name":"Sofort","id":"sofort/digital"},{"order":2,"name":"Sofort","id":"sofort/physical"}],"order":7,"description":"Sofort"},"afterpay":{"methods":[{"order":1,"name":"Afterpay","id":"afterpay/giro"}],"order":8,"description":"Afterpay"},"directdebit":{"methods":[{"order":1,"name":"SEPA Eenmalige Machtiging","id":"directdebit/sepa-once"},{"order":2,"name":"Sign2pay","id":"directdebit/sign2pay"},{"order":3,"name":"SEPA Doorlopende Machtiging","id":"directdebit/sepa-recurring"}],"order":4,"description":"SEPA Incasso"},"ideal":{"methods":[{"order":1,"name":"Rabobank","id":"ideal/RABONL2U"},{"order":2,"name":"ING","id":"ideal/INGBNL2A"},{"order":3,"name":"ABN AMRO","id":"ideal/ABNANL2A"},{"order":4,"name":"SNS Bank","id":"ideal/SNSBNL2A"},{"order":5,"name":"RegioBank","id":"ideal/RBRBNL21"},{"order":6,"name":"ASN Bank","id":"ideal/ASNBNL21"},{"order":7,"name":"Knab","id":"ideal/KNABNL2H"},{"order":8,"name":"Triodos Bank","id":"ideal/TRIONL2U"},{"order":9,"name":"van Lanschot","id":"ideal/FVLBNL22"}],"order":1,"description":"iDEAL"},"creditcard":{"methods":[{"order":1,"name":"Visa","id":"creditcard/visa"},{"order":2,"name":"Mastercard","id":"creditcard/mastercard"}],"order":6,"description":"Creditcard"},"banktransfer":{"methods":[{"order":1,"name":"SEPA Overboeking","id":"banktransfer/sepa"}],"order":5,"description":"SEPA Overboeking"},"bancontact":{"methods":[{"order":1,"name":"Bancontact/MrCash","id":"bancontact/mrcash"}],"order":3,"description":"Bancontact/MrCash"},"paypal":{"methods":[{"order":1,"name":"PayPal","id":"paypal/direct"},{"order":2,"name":"PayPal","id":"paypal/recurring"}],"order":2,"description":"PayPal"}}},"errors":"true"}

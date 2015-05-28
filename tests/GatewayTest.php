@@ -72,7 +72,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testFetchIssuers()
     {
-        //$this->setMockHttpResponse('FetchIssuersSuccess.txt');
+        $this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
 
         /** @var Message\FetchIssuersResponse $response */
         $response = $this->gateway->fetchIssuers($this->options)->send();
@@ -82,7 +82,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testPaymentMethods()
     {
-        //$this->setMockHttpResponse('FetchIssuersSuccess.txt');
+        $this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
 
         /** @var Message\FetchPaymentMethodsResponse $response */
         $response = $this->gateway->fetchPaymentMethods($this->options)->send();

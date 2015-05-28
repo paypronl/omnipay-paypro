@@ -57,7 +57,7 @@ class PurchaseRequest extends AbstractRequest
         $data['description'] = $this->getDescription();
         $data['product_id'] = $this->getProductId();
         $data['custom'] = $this->getTransactionId();
-        $data['psp_code'] = $this->getIssuer();
+        $data['pay_method'] = $this->getIssuer();
         $data['vat'] = $this->getVat();
         $data['return_url'] = $this->getReturnUrl();
         $data['postback_url'] = $this->getNotifyUrl();

@@ -7,24 +7,12 @@ use Omnipay\Common\Message\FetchIssuersResponseInterface;
 
 class FetchIssuersResponse extends AbstractResponse implements FetchIssuersResponseInterface
 {
-    protected $issuers = array(
-        '0021' => 'Rabobank',
-        '0031' => 'ABN',
-        '0721' => 'ING',
-        '0751' => 'SNS',
-        '0761' => 'ASN',
-        '0511' => 'Triodos',
-        '0771' => 'RegioBank',
-        '0161' => 'VanLanschot',
-        '102' => 'PayPal',
-    );
-
     /**
      * {@inheritdoc}
      */
     public function isSuccessful()
     {
-        return true;
+        return isset($this->data['return']) && isset($this->data['return']['data']);
     }
 
     /**
@@ -32,10 +20,15 @@ class FetchIssuersResponse extends AbstractResponse implements FetchIssuersRespo
      */
     public function getIssuers()
     {
-        $issuers = array();
+        if ( ! $this->isSuccessful()) {
+            return array();
+        }
 
-        foreach ($this->issuers as $id => $name) {
-            $issuers[] = new Issuer((string) $id, (string) $name, '000');
+        $issuers = array();
+        foreach ($this->data['return']['data'] as $methodId => $method) {
+            foreach ($method['methods'] as $issuer) {
+                $issuers[] = new Issuer($issuer['id'], $issuer['name'], $methodId);
+            }
         }
 
         return $issuers;

@@ -4,27 +4,11 @@ namespace Omnipay\PayPro\Message;
 
 /**
  * Complete Purchase Request.
+ *
+ * @method FetchIssuersResponse send()
  */
-class FetchIssuersRequest extends AbstractRequest
+class FetchIssuersRequest extends FetchPaymentMethodsRequest
 {
-    /**
-     * @return array;
-     */
-    public function getData()
-    {
-        return array();
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return CompletePurchaseResponse
-     */
-    public function sendData($data)
-    {
-        return $this->createResponse($data);
-    }
-
     /**
      * @param array $data
      *

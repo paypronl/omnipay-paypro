@@ -8,21 +8,12 @@ use Omnipay\Common\PaymentMethod;
 
 class FetchPaymentMethodsResponse extends BaseAbastractResponse implements FetchPaymentMethodsResponseInterface
 {
-    protected $methods = array(
-        '000' => 'iDEAL',
-        '102' => 'PayPal',
-        '104' => 'Bancontact MrCash',
-        '105' => 'SEPA Machtiging',
-        '106' => 'SEPA Overboeking',
-        '108' => 'Afterpay',
-    );
-
     /**
      * {@inheritdoc}
      */
     public function isSuccessful()
     {
-        return true;
+        return isset($this->data['return']) && isset($this->data['return']['data']);
     }
 
     /**
@@ -30,10 +21,13 @@ class FetchPaymentMethodsResponse extends BaseAbastractResponse implements Fetch
      */
     public function getPaymentMethods()
     {
-        $methods = array();
+        if ( ! $this->isSuccessful()) {
+            return array();
+        }
 
-        foreach ($this->methods as $id => $name) {
-            $methods[] = new PaymentMethod((string) $id, (string) $name);
+        $methods = array();
+        foreach ($this->data['return']['data'] as $id => $method) {
+            $methods[] = new PaymentMethod($id, $method['description']);
         }
 
         return $methods;

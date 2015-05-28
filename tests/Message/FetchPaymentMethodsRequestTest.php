@@ -18,7 +18,7 @@ class FetchPaymentMethodsRequestTest extends TestCase
 
     public function testSendSuccess()
     {
-        //$this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
+        $this->setMockHttpResponse('FetchPaymentMethodsSuccess.txt');
 
         /** @var FetchPaymentMethodsResponse $response */
         $response = $this->request->send();
@@ -26,12 +26,12 @@ class FetchPaymentMethodsRequestTest extends TestCase
         $this->assertTrue($response->isSuccessful());
 
         $methods = $response->getPaymentMethods();
-        $this->assertEquals(6, count($methods));
+        $this->assertEquals(8, count($methods));
 
         /** @var \Omnipay\Common\PaymentMethod $method */
         $method = $methods[0];
         $this->assertInstanceOf('\Omnipay\Common\PaymentMethod', $method);
-        $this->assertEquals('000', $method->getId());
-        $this->assertEquals('iDEAL', $method->getName());
+        $this->assertEquals('sofort', $method->getId());
+        $this->assertEquals('Sofort', $method->getName());
     }
 }
