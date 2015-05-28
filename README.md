@@ -16,7 +16,7 @@ PSRs you support to avoid any confusion with users and contributors.
 Via Composer
 
 ``` bash
-$ composer require paypronl/omnipay-paypro
+$ composer require paypronl/omnipay-paypro:0.1.x@dev
 ```
 
 ## Usage
