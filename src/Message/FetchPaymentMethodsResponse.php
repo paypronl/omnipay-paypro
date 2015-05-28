@@ -13,7 +13,7 @@ class FetchPaymentMethodsResponse extends BaseAbastractResponse implements Fetch
      */
     public function isSuccessful()
     {
-        return isset($this->data['return']) && isset($this->data['return']['data']);
+        return isset($this->data['return']) && is_array($this->data['return']) && isset($this->data['return']['data']);
     }
 
     /**

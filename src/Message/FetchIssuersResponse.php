@@ -12,7 +12,7 @@ class FetchIssuersResponse extends AbstractResponse implements FetchIssuersRespo
      */
     public function isSuccessful()
     {
-        return isset($this->data['return']) && isset($this->data['return']['data']);
+        return isset($this->data['return']) && is_array($this->data['return']) && isset($this->data['return']['data']);
     }
 
     /**
