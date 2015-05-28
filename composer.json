@@ -14,6 +14,11 @@
             "email": "info@fruitcakestudio.com",
             "homepage": "http://fruitcakestudio.com",
             "role": "Developer"
+        },
+        {
+            "name": "PayPro",
+            "email": "info@paypro.nl",
+            "homepage": "http://paypro.nl"
         }
     ],
     "require": {
