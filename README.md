@@ -13,7 +13,7 @@ PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
-Via Composer
+This gateway can be installed with [Composer](https://getcomposer.org/):
 
 ``` bash
 $ composer require paypronl/omnipay-paypro:0.1.x@dev
@@ -28,8 +28,14 @@ The following gateways are provided by this package:
 ## Example
 
 ```php
+
+require_once  __DIR__ . '/vendor/autoload.php';
+
+use Omnipay\Omnipay;
+
 /** @var \Omnipay\PayPro\Gateway $gateway */
-$gateway = Omnipay\Omnipay::create('PayPro');
+$gateway = Omnipay::create('PayPro');
+
 $gateway->initialize([
     'apiKey' => 'YOUR API KEY HERE',
     'productId' => null,
@@ -40,6 +46,14 @@ $params = array(
     'amount' => 12.34,
     'description' => 'Payment test',
     'returnUrl' => 'www.paypro.nl/return_here',
+    'notifyUrl' => 'www.paypro.nl/notify_here',
+    'transactionId' => 'abc12345',
+    'issuer' => 'sofort/digital',
+    'productId' => 12345,
+    'card' => array(
+        'email' => 'info@example.com',
+        'name' => 'My name',
+    ),
 );
 
 $response = $gateway->purchase($params)->send();
@@ -54,6 +68,60 @@ if ($response->isSuccessful()) {
 ```
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
+
+## Parameters
+
+You can set the following parameters:
+
+ - apiKey (required): The PayPro.nl Api Key
+ - amount (required): The amount, as float/decimal
+ - productId: Your PayPro.nl product Id
+ - description: The order description
+ - transactionId: A custom transactionId
+ - issuer: A payment method
+ - vat: The VAT percentage
+ - returnUrl: The URL to show after payment has been completed.
+ - notifyUrl: The URL to post the status to (postback url)
+ - testMode: Boolean to indicate testing.
+
+## Card information
+
+ You can set the following information, using the Card object.
+
+ - name / firstName + lastName
+ - email
+ - address1 / billingAddress1
+ - address2 / billingAddress2
+ - postcode / billingPostcode
+ - city / billingCity
+ - country / billingCountry
+
+See http://omnipay.thephpleague.com/api/cards/ for more information.
+
+## Payment methods
+
+You can get all available payment methods with `fetchPaymentMethods()` and the available issuers for all methods with `fetchIssuers()`.
+The Issuer ID can be passed to the `purchase()` method to directly configure the payment method.
+
+```php
+$methods = $gateway->fetchPaymentMethods()->send()->getPaymentMethods();
+
+/** @var \Omnipay\Common\PaymentMethod $method */
+foreach ($methods as $method) {
+    echo $method->getId();
+    echo $method->getName();
+}
+
+$issuers = $gateway->fetchIssuers()->send()->getIssuers();
+
+/** @var \Omnipay\Common\Issuer $issuer */
+foreach ($issuers as $issuer) {
+    echo $issuer->getId();
+    echo $issuer->getName();
+    echo $issuer->getPaymentMethod();
+}
+
+```
 
 ## Support
 
@@ -84,7 +152,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email info@paypro.nl instead of using the issue tracker.
+If you discover any security related issues, please email support@paypro.nl instead of using the issue tracker.
 
 ## Credits
 
