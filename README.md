@@ -45,10 +45,10 @@ $gateway->initialize([
 $params = array(
     'amount' => 12.34,
     'description' => 'Payment test',
-    'returnUrl' => 'www.paypro.nl/return_here',
-    'notifyUrl' => 'www.paypro.nl/notify_here',
+    'returnUrl' => 'www.your-domain.nl/return_here',
+    'notifyUrl' => 'www.your-domain.nl/notify_here', //see http://www.paypro.nl/postback
     'transactionId' => 'abc12345',
-    'issuer' => 'sofort/digital',
+    'issuer' => 'ideal/RABONL2U',
     'productId' => 12345,
     'card' => array(
         'email' => 'info@example.com',
