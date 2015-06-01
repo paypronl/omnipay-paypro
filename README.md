@@ -78,7 +78,7 @@ You can set the following parameters:
  - productId: Your PayPro.nl product Id
  - description: The order description
  - transactionId: A custom transactionId
- - issuer: A payment method # see http://www.paypro.nl/api for all pay methods (select get_all_pay_methods)
+ - issuer: A payment method, see http://www.paypro.nl/api for all pay methods (select get_all_pay_methods)
  - vat: The VAT percentage
  - returnUrl: The URL to show after payment has been completed.
  - notifyUrl: The URL to post the status to (postback url)
