@@ -60,6 +60,7 @@ class PurchaseRequest extends AbstractRequest
         $data['pay_method'] = $this->getIssuer();
         $data['vat'] = $this->getVat();
         $data['return_url'] = $this->getReturnUrl();
+        $data['cancel_url'] = $this->getCancelUrl();
         $data['postback_url'] = $this->getNotifyUrl();
         $data['test_mode'] = $this->getTestMode();
 
